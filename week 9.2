@@ -1,0 +1,32 @@
+import java.util.Scanner;
+import java.util.InputMismatchException;
+
+public class ArrayInputDemo {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+       
+        int size = scanner.nextInt();
+        int[] numbers = new int[size];
+
+        try {
+           
+            for (int i = 0; i < size; i++) {
+                numbers[i] = scanner.nextInt(); // This line can throw InputMismatchException
+            }
+
+            // Calculate the total sum
+            int sum = 0;
+            for (int number : numbers) {
+                sum += number;
+            }
+
+            // Print the total sum
+            System.out.println(sum);
+        } catch (InputMismatchException e) {
+            System.out.println("You entered bad data.");
+        } finally {
+            scanner.close(); // Close the scanner resource
+        }
+    }
+}
