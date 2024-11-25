@@ -1,0 +1,46 @@
+import java.util.Scanner;
+public class DigitSumCalculator{
+    public static int[] extractDigits(int[] arr){
+        int[] ex=new int[arr.length];
+        for(int i=0;i<arr.length;i++){
+            int num=arr[i];
+            int pos=i;
+            if(num<Math.pow(10,pos)){
+                ex[i]=0;
+            }else{
+                ex[i]=(int)(num/Math.pow(10,pos))%10;
+            }
+        }
+        return ex;
+    }
+    public static int[] squareDigits(int[] d){
+        int[] s=new int[d.length];
+        for(int i=0;i<d.length;i++){
+            s[i]=d[i]*d[i];
+        }
+        return s;
+    }
+    public static int sumArray(int[] a){
+        int sum=0;
+        for(int value:a){
+            sum+=value;
+        }
+        return sum;
+    }
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        
+        int n=scanner.nextInt();
+        
+        int[] arr=new int[n];
+        
+        for(int i=0;i<n;i++){
+            arr[i]=scanner.nextInt();
+        }
+        int[] ex=extractDigits(arr);
+        int[] s=squareDigits(ex);
+        int finalResult=sumArray(s);
+        System.out.println(finalResult);
+        scanner.close();
+    }
+}
