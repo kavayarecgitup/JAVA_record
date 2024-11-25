@@ -1,0 +1,36 @@
+import java.util.Scanner;
+public class ArrayOperations{
+    public static int[] performOperations(int[] inputArray){
+        int maxNumber=Integer.MIN_VALUE;
+        for(int num:inputArray){
+            if(num>maxNumber){
+                maxNumber=num;
+            }
+        }
+        int[] resultArray=new int[inputArray.length];
+        for(int i=0;i<inputArray.length;i++){
+            resultArray[i]=inputArray[i]-maxNumber;
+        }
+        for(int i=0;i<resultArray.length;i++){
+            resultArray[i]*=maxNumber;
+        }
+        return resultArray;
+    }
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        int numElements=scanner.nextInt();
+        int[] inputArray=new int[numElements];
+        for(int i=0;i<numElements;i++){
+            inputArray[i]=scanner.nextInt();
+        }
+        int[] resultArray=performOperations(inputArray);
+        for(int i=0;i<resultArray.length;i++){
+            System.out.print(resultArray[i]);
+            if(i<resultArray.length-1){
+                System.out.print(" ");
+            }
+        }
+        System.out.println();
+        scanner.close();
+    }
+}
