@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+public class WordProcessor {
+    
+    public static String processInput(String input1) {
+        String[] words = input1.split(":"); // Split the input string by colon
+        StringBuilder output = new StringBuilder();
+        
+        for (String word : words) { // Corrected for loop syntax
+            // Check if the word has at least 2 characters
+            if (word.length() < 2) {
+                continue; // Skip words that are too short
+            }
+            
+            char firstChar = word.charAt(0);
+            char secondChar = word.charAt(1);
+            
+            // Check if the first and second characters are the same
+            if (firstChar == secondChar) {
+                output.append(Character.toUpperCase(firstChar));
+            } else {
+                // Calculate the positions of the characters
+                int pos1 = firstChar - 'a' + 1; 
+                int pos2 = secondChar - 'a' + 1;
+                int diff = Math.abs(pos1 - pos2); // Calculate the absolute difference
+                
+                // Ensure diff is within bounds
+                char resultChar = (char) ('a' + (diff - 1)); // Find resulting character
+                output.append(Character.toUpperCase(resultChar));
+            }
+        }
+        
+        return output.toString(); // Return the processed string
+    }
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String a = scan.nextLine(); // Get user input
+        System.out.println(processInput(a)); // Process and print result
+        scan.close(); // Close the scanner
+    }
+}
