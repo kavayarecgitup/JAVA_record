@@ -1,0 +1,39 @@
+interface RBI {
+    String parentBank = "RBI"; // This is a constant
+
+    double rateOfInterest(); // Method to get the rate of interest
+
+    default void policyNote() {
+        System.out.println("RBI has a new Policy issued in 2023");
+    }
+
+    static void regulations() {
+        System.out.println("RBI has updated new regulations in 2024.");
+    }
+}
+
+class SBI implements RBI {
+    public double rateOfInterest() {
+        return 7.6; // SBI rate of interest
+    }
+}
+
+class Karur implements RBI {
+    public double rateOfInterest() {
+        return 7.4; // Karur rate of interest
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        SBI sbi = new SBI(); // Corrected instantiation of SBI
+        Karur karur = new Karur(); // Corrected instantiation of Karur
+
+        sbi.policyNote(); // Calling default method
+        RBI.regulations(); // Calling static method
+
+        // Print the rates of interest
+        System.out.println("SBI rate of interest: " + sbi.rateOfInterest() + " per annum.");
+        System.out.println("Karur rate of interest: " + karur.rateOfInterest() + " per annum."); // Fixed concatenation
+    }
+}
