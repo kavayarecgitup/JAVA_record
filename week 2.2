@@ -1,0 +1,17 @@
+import java.util.Scanner;
+public class WakeUpTime{
+    public static String getwakeUpTime(int day, boolean isVacation){
+        if(isVacation){
+            if(day==1|| day==7){
+                return "9:00";
+            }else{
+                return "7:00";
+            }
+        }else{
+            if(day==1||day==7){
+                return "6:00";
+            }else{
+                return "5:00";
+            }
+        }
+    }
