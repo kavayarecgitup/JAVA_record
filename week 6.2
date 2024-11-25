@@ -1,0 +1,59 @@
+import java.util.Scanner;
+
+public class MiddleExtractor {
+
+    // Method to process the input string and the 2-digit number
+    public static String processInput(String input1, int input2) {
+        String[] words = input1.split(" "); // Split input string into words
+        int firstWordIndex = input2 / 10 - 1; // Get the index of the first word (0-based)
+        int secondWordIndex = input2 % 10 - 1; // Get the index of the second word (0-based)
+
+        // Validate indices
+        if (firstWordIndex < 0 || firstWordIndex >= words.length || secondWordIndex < 0 || secondWordIndex >= words.length) {
+            return "Invalid word index in input2";
+        }
+
+        // Process both words
+        String processedFirstWord = processWord(words[firstWordIndex]);
+        String processedSecondWord = processWord(words[secondWordIndex]);
+
+        // Return the processed words separated by a space
+        return processedFirstWord + " " + processedSecondWord;
+    }
+
+    // Method to process a single word
+    private static String processWord(String word) {
+        int length = word.length();
+        int middleIndex = length / 2; // Find the middle index
+
+        // Extract Middle-to-Begin part
+        String middleToBegin;
+        if (length % 2 == 0) {
+            middleToBegin = new StringBuilder(word.substring(0, middleIndex)).reverse().toString();
+        } else {
+            middleToBegin = new StringBuilder(word.substring(0, middleIndex + 1)).reverse().toString();
+        }
+
+        // Extract Middle-to-End part
+        String middleToEnd = word.substring(middleIndex); // From middle to end
+        
+        // Combine both parts
+        return middleToBegin + middleToEnd;
+    }
+
+    // Main method
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Get user input
+        String input1 = scanner.nextLine();
+        
+        int input2 = scanner.nextInt();
+
+        // Process and display the result
+        String result = processInput(input1, input2);
+        System.out.println(result);
+        
+        scanner.close();
+    }
+}
