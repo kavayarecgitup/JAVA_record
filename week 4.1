@@ -1,0 +1,62 @@
+class Mobile{
+    //private
+    private String manufacturer;
+    private String operating_system;
+    private int cost;
+    
+    //public
+    public String color;
+    
+    //parameter
+    public Mobile(String manufacturer, String operating_system, String color, int cost){
+        this.manufacturer=manufacturer;
+        this.operating_system=operating_system;
+        this.color=color;
+        this.cost=cost;
+    }
+    
+    //getter
+    
+    public void setmanufacturer(String manufacturer){
+        this.manufacturer=manufacturer;
+    }
+    
+    public String getManufacturer(){
+        return this.manufacturer;
+    }
+    
+    public void setoperatingSystem(String operating_system){
+        this.operating_system=operating_system;
+    }
+    
+    public String getOperatingSystem(){
+        return this.operating_system;
+    }
+    
+    public void setCost(int cost){
+        this.cost=cost;
+    }
+    
+    public int getCost(){
+        return this.cost;
+    }
+    
+    //string
+    @Override
+    public String toString(){
+        return "manufacturer = "+manufacturer + "\n" +
+                "operating_system = " + operating_system + "\n" +
+                "color = " + color + "\n" +
+                "cost = " + cost;
+    }
+}
+
+public class prog{
+    public static void main(String[] args){
+        //create
+        Mobile mobile = new Mobile("Redmi", "Andriod", "Blue", 34000);
+        
+        //display
+        System.out.println(mobile);
+    }
+}
