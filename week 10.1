@@ -1,0 +1,30 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int count = scanner.nextInt();
+        
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            list.add(scanner.nextInt());
+        }
+
+        printArrayListDetails(list);
+    }
+
+    public static void printArrayListDetails(ArrayList<Integer> list) {
+        if (list.isEmpty()) {
+            System.out.println("The ArrayList is empty.");
+            return;
+        }
+        
+        System.out.println("ArrayList: " + list);
+        
+        int first = list.get(0);
+        int last = list.get(list.size() - 1);
+
+        System.out.println("First : " + first + ", Last : " + last);
+    }
+}
