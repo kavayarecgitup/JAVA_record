@@ -1,0 +1,30 @@
+public class OddEvenCheck {
+   
+    // Custom exception for odd numbers
+    static class OddNumberException extends Exception {
+        public OddNumberException(String message) {
+            super(message);
+        }
+    }
+   
+    public static void checkEven(int number) throws OddNumberException {
+        if (number % 2 != 0) {
+            throw new OddNumberException(number + " is odd.");
+        } else {
+            System.out.println(number + " is even.");
+        }
+    }
+
+    public static void main(String[] args) {
+        // Sample numbers to check
+        int[] numbers = {82, 37};
+
+        for (int number : numbers) {
+            try {
+                checkEven(number);
+            } catch (OddNumberException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        }
+    }
+}
