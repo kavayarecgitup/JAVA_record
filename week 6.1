@@ -1,0 +1,53 @@
+import java.util.LinkedHashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+public class StringProcessor {
+
+    public static String processStrings(String input1, String input2) {
+        // Concatenate both strings
+        String combined = input1 + input2;
+
+        // Remove spaces and create a set to remove duplicates
+        Set<Character> charSet = new LinkedHashSet<>();
+        for (char c : combined.toCharArray()) {
+            if (c != ' ') {
+                charSet.add(c);
+            }
+        }
+
+        // If the set is empty, return "null"
+        if (charSet.isEmpty()) {
+            return "null";
+        }
+
+        // Convert set to an array and sort it in descending order
+        Character[] uniqueChars = charSet.toArray(new Character[0]);
+        java.util.Arrays.sort(uniqueChars, java.util.Collections.reverseOrder());
+
+        // Build the result string
+        StringBuilder result = new StringBuilder();
+        for (char c : uniqueChars) {
+            result.append(c);
+        }
+
+        return result.toString();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Prompt for the first input
+        String input1 = scanner.nextLine();
+        
+        // Prompt for the second input
+        String input2 = scanner.nextLine();
+
+        // Process and display the result
+        String result = processStrings(input1, input2);
+        System.out.println(result);
+        
+        scanner.close();
+    }
+}
+
