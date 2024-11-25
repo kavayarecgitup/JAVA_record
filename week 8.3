@@ -1,0 +1,31 @@
+class FinalExample {
+    // Final variable
+    final int maxSpeed = 120; // Changed to final to prevent modification
+
+    // Final method
+    public final void displayMaxSpeed() { // Marked as final to prevent overriding
+        System.out.println("The maximum speed is: " + maxSpeed + " km/h"); // Corrected string concatenation
+    }
+}
+
+class Subclass extends FinalExample {
+    // Cannot override the final method displayMaxSpeed()
+    // public void displayMaxSpeed() {
+    //     System.out.println("Cannot override a final method"); // This is commented out since we can't override a final method
+    // }
+
+    // You can create new methods here
+    public void showDetails() {
+        System.out.println("This is a subclass of FinalExample.");
+    }
+}
+
+public class Prog { // Ensure the class name is capitalized
+    public static void main(String[] args) {
+        FinalExample obj = new FinalExample();
+        obj.displayMaxSpeed(); // Correctly calls the method
+
+        Subclass subObj = new Subclass();
+        subObj.showDetails(); // Correctly calls the new method
+    }
+}
